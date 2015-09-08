@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Demo Two.js</title>
+</head>
+	<body>
+    <div id="main"></div>
+    <script src="js/two.min.js"></script>
+    <script>
+      var el = document.getElementById("main");
+      two = new Two({
+        fullscreen: true
+      });
+
+      two.appendTo(el);
+
+      //Line
+      // var line = two.makeLine(10, 10, 110, 210);
+      // line.linewidth = 10;  //linewidth设置线段的宽度
+      // line.stroke = "rgba(255, 0, 0, 0.5)";  //stroke设置线段颜色
+
+      //Circle
+      // var circle = two.makeCircle(110, 110, 100);
+      // circle.fill = "#00ffff";
+
+      //Rectangle
+      // var rect = two.makeRectangle(115, 90, 150, 100);
+      // rect.fill = "orange";  //fill 填充颜色
+      // rect.opacity = 0.25;  //opacity 设置透明度
+      // rect.noStroke();  //noStroke 去掉图形边框
+
+      //Ellipse
+      // var ellipse = two.makeEllipse(100, 100, 90, 50);
+      // ellipse.stroke = "#112233"; //stroke 设置图形边框颜色
+      // ellipse.linewidth = 5; //lineWidth 设置图形边框宽度
+      // ellipse.noFill(); //noFill 去掉图形的填充内容
+
+      //Curve
+      // var curve = two.makeCurve(110, 100, 120, 50, 140, 150, 160, 50, 180, 150, 190, 100, true);
+      // curve.linewidth = 2;
+      // curve.scale = 1.75;  //scale 图形缩放比例
+      // curve.rotation = Math.PI / 2;  //rotation 图形旋转角度
+      // curve.noFill();
+
+      //Polygon
+      // var poly = two.makePolygon(110, 100, 120, 50, 140, 150, 160, 50, 180, 150, 190, 100);
+      // poly.linewidth = 4;
+      // poly.translation = new Two.Vector(60, 60); //translation 创建矢量坐标值 设置图形的位置
+      // poly.stroke = "#cccccc";
+      // poly.fill = "#ececec";
+
+      //Or another way to set the coordinates for the center of the shape
+      //poly.translation.x = 60;
+	    //poly.translation.y = 60;
+
+      //makeGroup - Cirlr Top
+      // var group = two.makeGroup(), // 创建一个群对象
+      // rect = two.makeRectangle(0, 0, 100, 100), // 创建一个方形
+      // circ = two.makeCircle(50, 50, 50); // 创建一个圆形
+      //
+      // rect.fill = "#FF8000"; // 给方形填充红色
+      // circ.fill = "rgba(0, 200, 255, 0.75)"; // 给圆形填充蓝色
+      //
+      // // 将创建好的方形和圆形添加到群对象中
+      // group.add(rect);
+      // group.add(circ);
+      //
+      // // 设置群对象的坐标位置
+      // group.translation.x = 100;
+      // group.translation.y = 100;
+
+      // makeGroup - Rectangle Top
+      // var topGroup = two.makeGroup(),
+    	//  bottomGroup = two.makeGroup(),
+    	// rect = two.makeRectangle(100, 100, 100, 100),
+    	// circ = two.makeCircle(150, 150, 50);
+    	// rect.fill = "#FF8000";
+    	// circ.fill = "rgba(0, 200, 255, .75)";
+      //
+    	// topGroup.add(circ);
+    	// bottomGroup.add(rect);
+
+      //update 重新绘制画面
+      // two.update();
+
+      //Animation
+      var circle = two.makeCircle(-70, 0, 50);
+      var rect = two.makeRectangle(70, 0, 100, 100);
+      circle.fill = '#FF8000';
+      rect.fill = 'rgba(0, 200, 255, 0.75)';
+
+      var group = two.makeGroup(circle, rect);
+      group.translation.set(two.width / 2, two.height / 2);
+      group.scale = 0;
+      group.noStroke();
+      two.bind('update', function(frameCount) {
+        if (group.scale > 0.9999) {
+          group.scale = group.rotation = 0;
+        }
+        var t = (1 - group.scale) * 0.125;
+        group.scale += t;
+        group.rotation += t * 4 * Math.PI;
+      }).play();
+    </script>
+	</body>
+</html>
