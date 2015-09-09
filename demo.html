@@ -54,54 +54,56 @@
       //poly.translation.x = 60;
 	    //poly.translation.y = 60;
 
-      //makeGroup - Cirlr Top
+      //makeGroup - Circle Top
       // var group = two.makeGroup(), // 创建一个群对象
       // rect = two.makeRectangle(0, 0, 100, 100), // 创建一个方形
       // circ = two.makeCircle(50, 50, 50); // 创建一个圆形
-      //
+      
       // rect.fill = "#FF8000"; // 给方形填充红色
       // circ.fill = "rgba(0, 200, 255, 0.75)"; // 给圆形填充蓝色
-      //
+      
       // // 将创建好的方形和圆形添加到群对象中
       // group.add(rect);
       // group.add(circ);
-      //
+      
       // // 设置群对象的坐标位置
       // group.translation.x = 100;
       // group.translation.y = 100;
 
       // makeGroup - Rectangle Top
-      // var topGroup = two.makeGroup(),
+     //  var topGroup = two.makeGroup(),
     	//  bottomGroup = two.makeGroup(),
     	// rect = two.makeRectangle(100, 100, 100, 100),
     	// circ = two.makeCircle(150, 150, 50);
     	// rect.fill = "#FF8000";
     	// circ.fill = "rgba(0, 200, 255, .75)";
-      //
-    	// topGroup.add(circ);
+      
+    	// topGroup.add(rect);
+     //  topGroup.add(circ);
+
     	// bottomGroup.add(rect);
 
       //update 重新绘制画面
       // two.update();
 
       //Animation
-      var circle = two.makeCircle(-70, 0, 50);
-      var rect = two.makeRectangle(70, 0, 100, 100);
-      circle.fill = '#FF8000';
-      rect.fill = 'rgba(0, 200, 255, 0.75)';
+      // var circle = two.makeCircle(-70, 0, 50);
+      // var rect = two.makeRectangle(70, 0, 100, 100);
+      // circle.fill = '#FF8000';
+      // rect.fill = 'rgba(0, 200, 255, 0.75)';
 
-      var group = two.makeGroup(circle, rect);
-      group.translation.set(two.width / 2, two.height / 2);
-      group.scale = 0;
-      group.noStroke();
-      two.bind('update', function(frameCount) {
-        if (group.scale > 0.9999) {
-          group.scale = group.rotation = 0;
-        }
-        var t = (1 - group.scale) * 0.125;
-        group.scale += t;
-        group.rotation += t * 4 * Math.PI;
-      }).play();
+      // var group = two.makeGroup(circle, rect);
+      // group.translation.set(two.width / 2, two.height / 2);
+      // group.scale = 0;
+      // group.noStroke();
+      // two.bind('update', function(frameCount) {
+      //   if (group.scale > 0.9999) {
+      //     group.scale = group.rotation = 0;
+      //   }
+      //   var t = (1 - group.scale) * 0.125;
+      //   group.scale += t;
+      //   group.rotation += t * 4 * Math.PI;
+      // }).play();
     </script>
 	</body>
 </html>
